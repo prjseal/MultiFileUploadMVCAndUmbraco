@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    Layout = "Master.cshtml";
+}
+
+<section class="section section--themed section--header section--content-center-bottom">
+    <div class="section__hero-content">
+        <h1 class="no-air">Upload Example</h1>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="col-md-12">
+            <article>
+                @if (TempData["FileNames"] != null)
+                {
+                    <p>Last uploaded files:</p>
+                    @Html.Raw(TempData["FileNames"].ToString())
+                }
+
+                @{ Html.RenderPartial("_UploadForm", new MFU.Web.Models.UploadModel()); }
+            </article>
+        </div>
+    </div>
+</section>
